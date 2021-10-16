@@ -1,0 +1,82 @@
+ul.info {
+    background-color: rgb(255, 255, 255);
+}
+
+button {
+    background-color: rgb(255, 255, 255);
+}
+button:hover {
+    background-color: rgb(140, 228, 255);
+}
+/*
+Main Menu
+*/
+button.menuinfo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30cm;
+}
+img.homescreen {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30cm;
+    height: 15cm
+}
+img.arrow {
+    position: absolute;
+    left: 10px;
+    bottom: 00px;
+}
+/*
+Info
+*/
+button.game {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+button.infomenu {
+    position: absolute;
+    top: 10px;
+    left: 41mm;
+}
+/*
+Game
+*/
+button.save {
+    position: absolute;
+    top: 46mm;
+    left: 8cm;
+}
+
+button.load {
+    position: absolute;
+    top: 77mm;
+    left: 8cm;
+}
+input.load {
+    position: absolute;
+    top: 108mm;
+    left: 8cm;
+    width: 102mm;
+    height: 13mm;
+}
+button.savetxt {
+    position: absolute;
+    top: 46mm;
+    left: 133mm;
+}
+
+button.loadtxt {
+    position: absolute;
+    top: 77mm;
+    left: 133mm;
+}
+.loadtxt>input {
+    display: none;
+}
+img.click {
+    border: 5px solid black;
+}
