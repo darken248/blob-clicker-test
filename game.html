@@ -19,19 +19,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Event</title>
+    <title>Blob Clicker</title>
     <link rel="shortcut icon" type="image/x-icon" href="/img/yellow blob.gif"/>
     <button class="menu" onclick="bewareIndex()"><img src="/img/main menu.png" height="70"></button>
 </head>
     <body>
-        <div>Score:<p class="score" id="score">0</p></div>
+        <div onclick="purp()">Score:</div>
+        <p class="score" id="score">0</p>
         <br>
-        <img class="click" src="img/yellow blob.gif" height="280px" width="280px" onclick="addToScore(1)">
+        <img class="click" id="click" src="img/yellow blob.gif" height="280px" width="280px" onclick="addToScore(1)">
         <br>
         <button class="save" onclick="save()"><img src="img/save.png" height="100"></button>
         <br>
         <button class="load" onclick="load()"><img src="img/load.png" height="100"></button>
-        <input type="text" class="load" id="load" value=''>
         <br>
         <button class="savetxt" onclick="savetxt()"><img src="img/save_as_.txt.png" height="100"></button>
         <br>

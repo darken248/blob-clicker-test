@@ -1,7 +1,8 @@
 let score = 0;
-let key = 'Deen is bad at Fortnite and we all know that because he has the fattest ass aroudn town but he will be the next Kim Kirdashian'
+let key = '032457kjhadkfg9887456ionfdigjkbsndfgh0978y3467yksjfdgh'
 let delay = 50;
 let lastClick = 0;
+let color = 'yellow';
 
 function bewareIndex() {
   let scoreId = document.getElementById('score').innerHTML
@@ -20,8 +21,20 @@ function addToScore(amount) {
     score = Number(scoreId)
     score = score + amount
     document.getElementById('score').innerHTML = score
-  }
+}
   
+function purp() {
+  if (color === 'yellow' && Number(document.getElementById('score').innerHTML) >= 1000) {
+    color = 'purple'
+    document.getElementById('click').width = 280;
+    return document.getElementById('click').src = 'img/purple blob.gif'
+  } else {
+    color = 'yellow'
+    document.getElementById('click').width = 280;
+    return document.getElementById('click').src = 'img/yellow blob.gif'
+  }
+}
+
 //Save Score
 function save() {
     //Import Current Score
@@ -30,12 +43,12 @@ function save() {
     let encrypted = CryptoJS.AES.encrypt(saveScore.toString(), key).toString();
     //Send Encrypted Line
     return alert(encrypted)
-  }
+}
   
   //Load Score
 function load() {
      //Import Encrypted Line
-    let decrypt = document.getElementById('load').value
+    let decrypt = prompt('Paste your string here');
     //Decrypt
     let bytes = CryptoJS.AES.decrypt(decrypt, key);
     let originalText = bytes.toString(CryptoJS.enc.Utf8);
@@ -63,8 +76,7 @@ let openFile = function(event) {
     let bytes = CryptoJS.AES.decrypt(dataURL, key);
     let originalText = bytes.toString(CryptoJS.enc.Utf8);
     let decrypted = Number(originalText)
-    let scoreid = document.getElementById('score')
-    scoreid.innertext = decrypted;
+    return document.getElementById('score').innerText = decrypted
   };
   reader.readAsText(input.files[0]);
 };

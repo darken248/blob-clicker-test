@@ -11,23 +11,25 @@ button:hover {
 /*
 Main Menu
 */
-button.menuinfo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30cm;
-}
 img.homescreen {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 30cm;
-    height: 15cm
+    width: 60%;
+    height: 50%;
+    top: 100px;
 }
-img.arrow {
+button.menuinfo {
     position: absolute;
-    left: 10px;
-    bottom: 00px;
+    width: 45mm;
+    height: 26mm;
+    top: 10px;
+    left: 35.5%;
+}
+button.menucreators {
+    position: absolute;
+    top: 10px;
+    right: 35.5%;
 }
 /*
 Info
@@ -41,6 +43,14 @@ button.infomenu {
     position: absolute;
     top: 10px;
     left: 41mm;
+}
+/*
+About the Creators
+*/
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    font-size: 25px;
 }
 /*
 Game
@@ -60,8 +70,8 @@ input.load {
     position: absolute;
     top: 108mm;
     left: 8cm;
-    width: 102mm;
-    height: 13mm;
+    width: 20%;
+    height: 4.5%;
 }
 button.savetxt {
     position: absolute;
@@ -78,5 +88,5 @@ button.loadtxt {
     display: none;
 }
 img.click {
-    border: 5px solid black;
+    border: 2px solid black;
 }
