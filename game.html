@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<div id="demo3"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
@@ -8,28 +7,36 @@
     <link rel="stylesheet" href="style.css">
 <head>
     <script type="text/javascript">
-        //60 = 1 min// 600 = 10 min
-    let time10to15 = 60 * Math.floor(Math.random() * 5)
-    let checktime = 600 + time10to15
-    let howmin = checktime / 10
-    let checkmin = checktime / howmin
-    setInterval(function() {
-    alert(`Are you there? It has been ${checkmin} minutes`)
-    }, checktime * 1000); </script>
+    //60 = 1 min// 600 = 10 min
+        let min10 = Math.floor(Math.random() * 10)
+        let time10to15 = 10 + min10
+        let checktime = 60 * time10to15
+        console.log(`min10 = ${min10}, time10to15  = ${time10to15}, checktime = ${checktime}`)
+        setInterval(function() {
+        let time = new Date;
+        console.log(`(${time}) + (${time10to15}) + (${checktime * 10})`)
+        return alert(`Are you there? It has been ${time10to15} minutes`)
+        }, checktime * 1000);
+
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blob Clicker</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/img/yellow blob.gif"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/blob/yellow blob.gif"/>
     <button class="menu" onclick="bewareIndex()"><img src="/img/main menu.png" height="70"></button>
 </head>
     <body>
-        <div onclick="purp()">Score:</div>
-        <p class="score" id="score">0</p>
+        <div><a onclick="purp()">Score:</a><a onclick="dababy()"class="dababy">Lets Go</a></div>
+        <p class="score" id="score" onclick="blue(1)">0</p>
         <br>
-        <img class="click" id="click" src="img/yellow blob.gif" height="280px" width="280px" onclick="addToScore(1)">
+        <img class="click" id="click" src="img/blob/yellow blob.gif" height="280px" width="280px" onclick="addToScore(1)">
         <br>
-        <button class="save" onclick="save()"><img src="img/save.png" height="100"></button>
+        <img class="dialogue" id="dialogue" src="img/blob/dialogue/yellow.png" height="40px" width="300px">
+        <br>
+        <img class="blob" id="blob" src="" onclick="red()" height="100px" style="border: 2px solid white">
+        <br>
+        <button class="save" onclick="save(1)"><img src="img/save.png" height="100"></button>
         <br>
         <button class="load" onclick="load()"><img src="img/load.png" height="100"></button>
         <br>

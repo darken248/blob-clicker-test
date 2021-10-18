@@ -15,21 +15,23 @@ img.homescreen {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
-    height: 50%;
-    top: 100px;
 }
 button.menuinfo {
     position: absolute;
     width: 45mm;
     height: 26mm;
-    top: 10px;
-    left: 35.5%;
+    top: 1%;
+    left: 27%;
 }
 button.menucreators {
     position: absolute;
-    top: 10px;
-    right: 35.5%;
+    top: 1%;
+    right: 27%;
+}
+button.menupatch {
+    position: absolute;
+    top: 1%;
+    left: 42%;
 }
 /*
 Info
@@ -89,4 +91,22 @@ button.loadtxt {
 }
 img.click {
     border: 2px solid black;
+}
+a.dababy {
+    position: absolute;
+    right: 1%;
+    font-size: 50px;
+    color: white;
+}
+img.dialogue {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+img.blob {
+    position: absolute;
+    top: 108mm;
+    left: 108mm;
+}
+img.blob:hover {
+    background-color: rgb(140, 228, 255);
 }
