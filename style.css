@@ -90,3 +90,13 @@ button.loadtxt {
 img.click {
     border: 2px solid black;
 }
+a.dababy {
+    position: absolute;
+    right: 1%;
+    font-size: 50px;
+    color: white;
+}
+p.dialogue {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
