@@ -28,18 +28,26 @@ function addToScore(amount) {
 function purp() {
   if (color === 'yellow') {
     color = 'purple'
+    document.getElementById('dialogue').src = 'img/blob dialogue/purple.png'
+    setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
     return document.getElementById('click').src = 'img/blob/purple blob.gif'
   } else if(color !== 'yellow'){
     color = 'yellow'
+    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
 }
 function dababy() {
   if(color === 'yellow'){
     color = 'dababy'
+    document.getElementById('dialogue').src = 'img/blob dialogue/dababy.png'
+    setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
     return document.getElementById('click').src = 'img/dababy.jpg'
   } else if(color != 'yellow'){
     color = 'yellow'
+    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
 }
@@ -48,10 +56,14 @@ function blue(amount) {
   if (color === 'yellow' && document.getElementById('score').innerText >= 10 && scoreclick >= 3) {
     color = 'blue'
     scoreclick = 0
+    document.getElementById('dialogue').src = 'img/blob dialogue/blue.png'
+    setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
     return document.getElementById('click').src = 'img/blob/blue blob.gif'
   } else if(color !== 'yellow' && scoreclick >= 3){
     scoreclick = 0
     color = 'yellow'
+    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
   return 
@@ -64,9 +76,13 @@ function save(amount) {
     scoreclick2 = 0
     if (confirm('Do you like me? - Yellow Blob')) {
       color = 'pink'
+      document.getElementById('dialogue').src = 'img/blob dialogue/erase.png'
+      setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
       return document.getElementById('click').src = 'img/blob/pink blob.gif'
     } else {
       color = 'green'
+      document.getElementById('dialogue').src = 'img/blob dialogue/green.png'
+      setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
       return document.getElementById('click').src = 'img/blob/green blob.gif'
     }
   }
@@ -74,6 +90,8 @@ function save(amount) {
   if(color != 'yellow' && scoreclick2 >= 5) {
     color = 'yellow'
     scoreclick2 = 0
+    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
     //Import Current Score
@@ -97,12 +115,18 @@ function load() {
     document.getElementById('score').innerText = ImportScore
     } else if(imports.toLowerCase() === 'orange' && document.getElementById('score').innerText >= 2500) {
       color = 'orange'
+      document.getElementById('dialogue').src = 'img/blob dialogue/orange.png'
+      setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
       document.getElementById('click').src = 'img/blob/orange blob.gif'
     } else if(imports.toLowerCase() === 'yellow') {
       color = 'yellow'
+      document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+      setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
       document.getElementById('click').src = 'img/blob/yellow blob.gif'
     } else if(imports.toLowerCase() === 'erasevfx') {
       color = 'erasevfx'
+      document.getElementById('dialogue').src = 'img/blob dialogue/erase.png'
+      setTimeout(function() { document.getElementById('dialogue').src = ''; }, 10000);
       document.getElementById('click').src = 'img/erase logo.png'
     }
 }
