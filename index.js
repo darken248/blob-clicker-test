@@ -155,7 +155,7 @@ function load() {
     score = ImportScore
     //Change Score to Imported Score
     document.getElementById('score').innerText = score
-    } else if(imports.toLowerCase() === 'orange' && document.getElementById('score').innerText) {
+    } else if(imports.toLowerCase() === 'orange' && document.getElementById('score').innerText >= 2500) {
       color = 'orange'
       if(totalcolor.indexOf('orange') >= 1) {
         console.log(totalcolor)
