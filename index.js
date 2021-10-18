@@ -28,12 +28,12 @@ function addToScore(amount) {
 function purp() {
   if (color === 'yellow') {
     color = 'purple'
-    document.getElementById('dialogue').src = 'img/blob dialogue/purple.png'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/purple.png'
     setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
     return document.getElementById('click').src = 'img/blob/purple blob.gif'
   } else if(color !== 'yellow'){
     color = 'yellow'
-    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
@@ -41,12 +41,12 @@ function purp() {
 function dababy() {
   if(color === 'yellow'){
     color = 'dababy'
-    document.getElementById('dialogue').src = 'img/blob dialogue/dababy.png'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/dababy.png'
     setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
     return document.getElementById('click').src = 'img/dababy.jpg'
   } else if(color != 'yellow'){
     color = 'yellow'
-    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
@@ -56,13 +56,13 @@ function blue(amount) {
   if (color === 'yellow' && document.getElementById('score').innerText >= 10 && scoreclick >= 3) {
     color = 'blue'
     scoreclick = 0
-    document.getElementById('dialogue').src = 'img/blob dialogue/blue.png'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/blue.png'
     setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
     return document.getElementById('click').src = 'img/blob/blue blob.gif'
   } else if(color !== 'yellow' && scoreclick >= 3){
     scoreclick = 0
     color = 'yellow'
-    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
@@ -76,12 +76,12 @@ function save(amount) {
     scoreclick2 = 0
     if (confirm('Do you like me? - Yellow Blob')) {
       color = 'pink'
-      document.getElementById('dialogue').src = 'img/blob dialogue/erase.png'
+      document.getElementById('dialogue').src = 'img/blob/dialogue/pink.png'
       setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
       return document.getElementById('click').src = 'img/blob/pink blob.gif'
     } else {
       color = 'green'
-      document.getElementById('dialogue').src = 'img/blob dialogue/green.png'
+      document.getElementById('dialogue').src = 'img/blob/dialogue/green.png'
       setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
       return document.getElementById('click').src = 'img/blob/green blob.gif'
     }
@@ -90,7 +90,7 @@ function save(amount) {
   if(color != 'yellow' && scoreclick2 >= 5) {
     color = 'yellow'
     scoreclick2 = 0
-    document.getElementById('dialogue').src = 'img/blob dialogue/yellow.png'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     setTimeout(function() { document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'; }, 10000);
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
@@ -107,12 +107,14 @@ function load() {
      //Import Encrypted Line
     let imports = prompt('Paste your string here');
     //Decrypt
-    if(imports != 'orange' && imports != 'yellow' && imports != 'erasevfx'){
+    if(imports.length() > 10){
+      console.log('1')
     let bytes = CryptoJS.AES.decrypt(imports, key);
     let originalText = bytes.toString(CryptoJS.enc.Utf8);
     let ImportScore = Number(originalText)
+    score = ImportScore
     //Change Score to Imported Score
-    document.getElementById('score').innerText = ImportScore
+    document.getElementById('score').innerText = score
     } else if(imports.toLowerCase() === 'orange' && document.getElementById('score').innerText >= 2500) {
       color = 'orange'
       document.getElementById('dialogue').src = 'img/blob dialogue/orange.png'
@@ -150,7 +152,8 @@ let openFile = function(event) {
     let bytes = CryptoJS.AES.decrypt(dataURL, key);
     let originalText = bytes.toString(CryptoJS.enc.Utf8);
     let decrypted = Number(originalText)
-    return document.getElementById('score').innerText = decrypted
+    score = decrypted
+    return document.getElementById('score').innerText = score
   };
   reader.readAsText(input.files[0]);
 };
