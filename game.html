@@ -17,7 +17,9 @@
         console.log(`(${time}) + (${time10to15}) + (${checktime * 10})`)
         return alert(`Are you there? It has been ${time10to15} minutes`)
         }, checktime * 1000);
-
+        window.onload = function() {
+            document.getElementById('version').innerHTML = version
+        }
     </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,5 +51,6 @@
           
             <input id="file-input" type="file" accept='.txt' onchange="openFile(event)"/>
         </button>
+        <h1 class="version" id="version">V 1.0.0</h1>
     </body>
 </html>

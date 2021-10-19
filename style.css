@@ -33,6 +33,15 @@ button.menupatch {
     top: 1%;
     left: 42%;
 }
+h1.versions {
+    -webkit-transform: rotate(30deg); 
+    -moz-transform: rotate(30deg); 
+    position: absolute;
+    top: 80px;
+    right: 10%;
+    font-size: 33px;
+    color: black;
+}
 /*
 Info
 */
@@ -55,8 +64,21 @@ table, th, td {
     font-size: 25px;
 }
 /*
+Patch Notes
+*/
+p.patchversion {
+    position: absolute;
+    top: 8%;
+    left: 20%;
+}
+/*
 Game
 */
+h1.version {
+    position: absolute;
+    bottom: 1%;
+    left: 2%;
+}
 button.save {
     position: absolute;
     top: 46mm;

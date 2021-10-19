@@ -7,23 +7,24 @@ let scoreclick = 0;
 let scoreclick2 = 0;
 let totalcolor = ['yellow'];
 console.log(totalcolor)
+
+const version = 'V 1.0.2'
+window.onload = function(){
+  document.getElementById('version').innerHTML = version + ' is out'
+}
+function addToScore(amount) {
+  if (lastClick >= (Date.now() - delay))
+      return;
+  lastClick = Date.now();
+  score = score + amount
+  document.getElementById('score').innerHTML = score
+}
 function bewareIndex() {
-  let scoreId = document.getElementById('score').innerHTML
-  score = Number(scoreId)
   if (score !== 0) {
     if (confirm(`Are you sure? This will reset your progress if you don't save first.`)) {
       location.href = "/index.html"
     }
   } else {location.href = "/index.html"}
-}
-function addToScore(amount) {
-    if (lastClick >= (Date.now() - delay))
-        return;
-    lastClick = Date.now();
-    let scoreid = document.getElementById('score').innerText
-    score = Number(scoreid)
-    score = score + amount
-    document.getElementById('score').innerHTML = score
 }
   
 function purp() {
@@ -104,7 +105,7 @@ function save(amount) {
   }
   if (color === 'yellow') {
   scoreclick2 = scoreclick2 + amount
-  if (color === 'yellow' && document.getElementById('score').innerText >= 10 && scoreclick2 >= 5) {
+  if (color === 'yellow' && score >= 10 && scoreclick2 >= 5) {
     scoreclick2 = 0
     if (confirm('Do you like me? - Yellow Blob')) {
       color = 'pink'
@@ -135,10 +136,8 @@ function save(amount) {
     document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
-    //Import Current Score
-    let saveScore = document.getElementById('score').innerText
     //Encrypt
-    let encrypted = CryptoJS.AES.encrypt(saveScore.toString(), key).toString();
+    let encrypted = CryptoJS.AES.encrypt(score.toString(), key).toString();
     //Send Encrypted Line
     return alert(encrypted)
 }
@@ -155,7 +154,7 @@ function load() {
     score = ImportScore
     //Change Score to Imported Score
     document.getElementById('score').innerText = score
-    } else if(imports.toLowerCase() === 'orange' && document.getElementById('score').innerText >= 2500) {
+    } else if(imports.toLowerCase() === 'orange' && score >= 2500) {
       color = 'orange'
       if(totalcolor.indexOf('orange') >= 1) {
         console.log(totalcolor)
@@ -179,7 +178,7 @@ function load() {
       }
       document.getElementById('dialogue').src = 'img/blob/dialogue/erase.png'
       document.getElementById('click').src = 'img/erase logo.png'
-    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 8) {
+    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 8 && score >= 15000) {
       const blob = document.getElementById('blob')
       blob.style.border = '2px solid black';
       document.getElementById('blob').src = 'img/blob/Red_blob_button.png'
@@ -187,10 +186,8 @@ function load() {
 }
 
 function savetxt() {
-  //Import Current Score
-  let saveScore = document.getElementById('score').innerText
   //Encrypt
-  let encrypted = CryptoJS.AES.encrypt(saveScore.toString(), key).toString();
+  let encrypted = CryptoJS.AES.encrypt(score.toString(), key).toString();
   //Send Encrypted Line
   var blob = new Blob([encrypted]);
   saveAs(blob, "blobclicker.txt");

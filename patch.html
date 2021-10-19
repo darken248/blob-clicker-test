@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +16,16 @@
         function game(){
             location.href = "/game.html"
         }
+        window.onload = function() {
+            document.getElementById('version').innerHTML = 'Current Version: ' + version
+        }
     </script>
 </head>
 <body>
     <br><br><br><br>
+    <h1 class="patchversion" id="version">V 1.0.0</h1>
+    <h1>V 1.0.2 (October 19, 2021)</h1>
+    <p>Fixed bug involving Inspect Element to give unlimited score</p>
     <h1>V 1.0.1 (October 18, 2021)</h1>
     <p>Updated the about the creators page and added erasevfx's youtube link</p>
     <h1>V 1.0.0 (October 18, 2021)</h1>
