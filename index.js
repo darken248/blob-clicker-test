@@ -183,10 +183,6 @@ function load() {
       const blob = document.getElementById('blob')
       blob.style.border = '2px solid black';
       document.getElementById('blob').src = 'img/blob/Red_blob_button.png'
-    } else if(imports.toLowerCase() !== 'red' && imports.length < 11) {
-      const blob = document.getElementById('blob')
-      blob.style.border = '2px solid white';
-      document.getElementById('blob').src = ''
     }
 }
 
