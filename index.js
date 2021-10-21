@@ -178,7 +178,7 @@ function load() {
       }
       document.getElementById('dialogue').src = 'img/blob/dialogue/erase.png'
       document.getElementById('click').src = 'img/erase logo.png'
-    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 8 && score >= 15000) {
+    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 8 && score >= 35000) {
       const blob = document.getElementById('blob')
       blob.style.border = '2px solid black';
       document.getElementById('blob').src = 'img/blob/Red_blob_button.png'
