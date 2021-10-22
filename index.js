@@ -3,15 +3,26 @@ let key = '032wdfgkuywfe457ksghwajhabkdgfg98sqegeavkski356jbvhbjvnk83fge741ghsfe
 let delay = 50;
 let lastClick = 0;
 let color = 'yellow';
-let scoreclick = 0;
-let scoreclick2 = 0;
+var click = {};
+click.blue = 0;
+click.pink = 0
 let totalcolor = ['yellow'];
 console.log(totalcolor)
 
-const version = 'V 1.0.2'
+const version = 'V 1.1.0'
 window.onload = function(){
   document.getElementById('version').innerHTML = version + ' is out'
 }
+setInterval(function() {
+  if(color != 'kirbospin') {
+    const dialogue = document.getElementById('dialogue')
+    const dialogue2 = document.getElementById('dialogue2')
+    dialogue2.style.border = '2px solid transparent';
+    dialogue2.style.backgroundColor = 'transparent';
+    dialogue.style.border = '2px solid black';
+    document.getElementById('dialogue2').innerHTML = ''
+  }
+}, 100)
 function addToScore(amount) {
   if (lastClick >= (Date.now() - delay))
       return;
@@ -62,7 +73,7 @@ function dababy() {
   }
 }
 function red() {
-  if(color != 'red') {
+  if(color != 'red' && totalcolor.length >= 10 && score >= 35000) {
   color = 'red'
   document.getElementById('dialogue').src = 'img/blob/dialogue/red.png'
   document.getElementById('click').src = 'img/blob/red blob.gif'
@@ -73,10 +84,10 @@ function red() {
   }
 }
 function blue(amount) {
-  scoreclick = scoreclick + amount
-  if (color === 'yellow' && document.getElementById('score').innerText >= 10 && scoreclick >= 3) {
+  click.blue = click.blue + amount
+  if (color === 'yellow' && document.getElementById('score').innerText >= 10 && click.blue >= 3) {
     color = 'blue'
-    scoreclick = 0
+    click.blue = 0
     if(totalcolor.indexOf('blue') >= 1) {
       console.log(totalcolor)
     } else {
@@ -85,8 +96,8 @@ function blue(amount) {
     }
     document.getElementById('dialogue').src = 'img/blob/dialogue/blue.png'
     return document.getElementById('click').src = 'img/blob/blue blob.gif'
-  } else if(color !== 'yellow' && scoreclick >= 3){
-    scoreclick = 0
+  } else if(color !== 'yellow' && click.blue >= 3){
+    click.blue = 0
     color = 'yellow'
     document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
@@ -96,17 +107,17 @@ function blue(amount) {
 //Save Score
 function save(amount) {
   if(color != 'yellow') {
-  scoreclick2 = scoreclick2 + amount
-  if(color != 'yellow' && scoreclick2 >= 5){
+    click.pink = click.pink + amount
+  if(color != 'yellow' && click.pink >= 5){
     color = 'yellow'
-    scoreclick2 = 0
+    click.pink = 0
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
   }
   if (color === 'yellow') {
-  scoreclick2 = scoreclick2 + amount
-  if (color === 'yellow' && score >= 10 && scoreclick2 >= 5) {
-    scoreclick2 = 0
+    click.pink = click.pink + amount
+  if (color === 'yellow' && score >= 10 && click.pink >= 5) {
+    click.pink = 0
     if (confirm('Do you like me? - Yellow Blob')) {
       color = 'pink'
       if(totalcolor.indexOf('pink') >= 1) {
@@ -130,9 +141,9 @@ function save(amount) {
     }
   }
   }
-  if(color != 'yellow' && scoreclick2 >= 5) {
+  if(color != 'yellow' && click.pink >= 5) {
     color = 'yellow'
-    scoreclick2 = 0
+    click.pink = 0
     document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
@@ -141,13 +152,12 @@ function save(amount) {
     //Send Encrypted Line
     return alert(encrypted)
 }
-  
-  //Load Score
+//Load Score
 function load() {
      //Import Encrypted Line
     let imports = prompt('Paste your string here');
     //Decrypt
-    if(imports.length > 10){
+    if(imports.length > 15){
     let bytes = CryptoJS.AES.decrypt(imports, key);
     let originalText = bytes.toString(CryptoJS.enc.Utf8);
     let ImportScore = Number(originalText)
@@ -178,13 +188,38 @@ function load() {
       }
       document.getElementById('dialogue').src = 'img/blob/dialogue/erase.png'
       document.getElementById('click').src = 'img/erase logo.png'
-    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 8 && score >= 15000) {
+    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 10 && score >= 35000) {
       const blob = document.getElementById('blob')
-      blob.style.border = '2px solid black';
+      blob.style.border = '2px solid black'
       document.getElementById('blob').src = 'img/blob/Red_blob_button.png'
+    } else if(imports.toLowerCase() === 'ilovekirbo') {
+      color = 'ilovekirbo'
+      if(totalcolor.indexOf('ilovekirbo') >= 1) {
+        console.log(totalcolor)
+      } else {
+        totalcolor.push('ilovekirbo')
+        console.log(totalcolor)
+      }
+      document.getElementById('dialogue').src = 'img/blob/dialogue/cullen blob.png'
+      document.getElementById('click').src = 'img/cullen blob.png'
+    } else if(imports.toLowerCase() === 'kirbospin') {
+      color = 'kirbospin'
+      if(totalcolor.indexOf('kirbospin') >= 1) {
+        console.log(totalcolor)
+      } else {
+        totalcolor.push('kirbospin')
+        console.log(totalcolor)
+      }
+      const dialogue = document.getElementById('dialogue')
+      const dialogue2 = document.getElementById('dialogue2')
+      dialogue2.style.border = '2px solid black';
+      dialogue.style.border = '2px solid white';
+      dialogue2.style.backgroundColor = 'rgb(63,143,42)';
+      document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'
+      document.getElementById('dialogue2').innerHTML = '<br>' + `Do you know where you're going when you die?`
+      document.getElementById('click').src = 'img/kirbo-spin.gif'
     }
 }
-
 function savetxt() {
   //Encrypt
   let encrypted = CryptoJS.AES.encrypt(score.toString(), key).toString();
@@ -192,7 +227,6 @@ function savetxt() {
   var blob = new Blob([encrypted]);
   saveAs(blob, "blobclicker.txt");
 }
-
 let openFile = function(event) {
   var input = event.target;
 
@@ -207,3 +241,38 @@ let openFile = function(event) {
   };
   reader.readAsText(input.files[0]);
 };
+function coinflip() {
+  let amount = Number(document.getElementById('coinflip').value)
+  if(amount === 0) return
+  if(score < amount) {
+  console.log(score)
+  return alert('Your amount is greater than your score')
+  }
+  let imports = prompt('Heads or Tails');
+  let side = '';
+  let opposite = '';
+  if(imports.toLowerCase() === 'heads' || imports.toLowerCase() === 'head'){
+    side = 'Heads'
+    opposite = 'Tails'
+  } else if(imports.toLowerCase() === 'tails' || imports.toLowerCase() === 'tail'){
+    side = 'tails'
+    opposite = 'heads'
+  } else {
+    return alert('Incorrect Value')
+  }
+  if(score >= amount) {
+    //0 or 1
+    let random = Math.floor(Math.random() * 2)
+    if(random === 0) {
+      //lose = 0
+      score = score - amount
+      document.getElementById('score').innerText = score
+      alert(`It was ${opposite}, you chose ${side} and you lost ${amount}`)
+    } else {
+      //win = 1
+      score = score + amount
+      document.getElementById('score').innerText = score
+      alert(`It was ${side}, you won ${amount}`)
+    }
+  }
+}

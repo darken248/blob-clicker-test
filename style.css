@@ -9,6 +9,25 @@ button:hover {
     background-color: rgb(140, 228, 255);
 }
 /*
+Custom Fonts
+*/
+@font-face {
+    font-family: 'dogica'; /*a name to be used later*/
+    src: url('/fonts/dogica.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'dogicabold'; /*a name to be used later*/
+    src: url('/fonts/dogicabold.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'dogicapixel'; /*a name to be used later*/
+    src: url('/fonts/dogicapixel.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'dogicapixelbold'; /*a name to be used later*/
+    src: url('/fonts/dogicapixelbold.ttf'); /*URL to font*/
+}
+/*
 Main Menu
 */
 img.homescreen {
@@ -38,8 +57,9 @@ h1.versions {
     -moz-transform: rotate(30deg); 
     position: absolute;
     top: 80px;
-    right: 10%;
-    font-size: 33px;
+    right: 5%;
+    font-family: 'dogicapixel';
+    font-size: 23px;
     color: black;
 }
 /*
@@ -67,6 +87,7 @@ table, th, td {
 Patch Notes
 */
 p.patchversion {
+    font-family: 'dogicapixel';
     position: absolute;
     top: 8%;
     left: 20%;
@@ -77,7 +98,7 @@ Game
 h1.version {
     position: absolute;
     bottom: 1%;
-    left: 2%;
+    right: 5%;
 }
 button.save {
     position: absolute;
@@ -118,11 +139,25 @@ a.dababy {
     position: absolute;
     right: 1%;
     font-size: 50px;
-    color: white;
+    color: transparent;
 }
 img.dialogue {
     border: 2px solid black;
     border-collapse: collapse;
+    height: 40px;
+    width: 300px;
+}
+p.dialogue2 {
+    border: 2px solid black;
+    border-collapse: collapse;
+    height: 50px;
+    width: 300px;
+    font-family: 'dogicapixel';
+    color: rgb(196, 196, 36);
+    background-color: rgb(63,143,42);
+    font-size: 15px;
+    position: absolute;
+    top: 118mm;
 }
 img.blob {
     position: absolute;
@@ -131,4 +166,20 @@ img.blob {
 }
 img.blob:hover {
     background-color: rgb(140, 228, 255);
+}
+input.input-coinflip {
+    width: 107mm;
+    height: 10mm;
+    border: 2px solid black;
+    font-family: 'dogicapixel';
+    font-size: 9px;
+}
+button.btn-coinflip {
+    position: absolute;
+    left: 114mm;
+    width: 31mm;
+    height: 12mm;
+    border: 2px solid black;
+    font-family: 'dogicapixel';
+    font-size: 20px;
 }
