@@ -269,11 +269,20 @@ function coinflip() {
     let random = Math.floor(Math.random() * 2)
     if(random === 0) {
       //lose = 0
-      score = score - amount
+      if(amount < 0){
+        score = score - 0
+      } else if(score > 0){
+        score = score - amount
+      }
       document.getElementById('score').innerText = score
       alert(`It was ${opposite}, you chose ${side} and you lost ${amount}`)
     } else {
       //win = 1
+      if(amount < 0){
+        score = score + 0
+      } else if(score > 0){
+        score = score + amount
+      }
       score = score + amount
       document.getElementById('score').innerText = score
       alert(`It was ${side}, you won ${amount}`)
