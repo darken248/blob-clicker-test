@@ -29,7 +29,7 @@ newGameButton.addEventListener('click', function() {
   if(amount.value != Number(amount.value)) {
     return alert('Invalid Amount')
   }
-  if(num > score || num <= 0){
+  if(num > score || num <= 0 || num < -1){
     return alert('Missing amount to Gamble')
   }
 
