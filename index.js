@@ -14,6 +14,10 @@ window.onload = function(){
   document.getElementById('version').innerHTML = version + ' is out'
 }
 setInterval(function() {
+  if(score < 0) {
+    score = 0
+    document.getElementById('score').innerHTML = score
+  }
   if(color != 'kirbospin') {
     const dialogue = document.getElementById('dialogue')
     const dialogue2 = document.getElementById('dialogue2')
