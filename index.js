@@ -248,7 +248,7 @@ let openFile = function(event) {
 function coinflip() {
   let amount = Number(document.getElementById('coinflip').value)
   if(amount === 0) return
-  if(score < amount || score < 0) {
+  if(score < amount) {
   console.log(score)
   return alert('Your amount is greater than your score')
   }

@@ -32,7 +32,6 @@ newGameButton.addEventListener('click', function() {
   if(num > score || num <= 0){
     return alert('Missing amount to Gamble')
   }
-
   gameStarted = true;
   gameOver = false;
   playerWon = false;
@@ -180,13 +179,22 @@ function showStatus()
     let num = Number(amount.value)
     if(playerWon)
     {
+      if(num < 0){
+        score = score + 0
+      } else if(score > 0){
+        score = score + num
+      }
         textArea.innerText += "YOU WIN!";
         score = score + num
         document.getElementById('score').innerHTML = score
     }
-    else{
+    else {
+      if(num < 0){
+        score = score + 0
+      } else if(score > 0){
+        score = score - num
+      }
       textArea.innerText += "DEALER WINS";
-      score = score - num
       document.getElementById('score').innerHTML = score
     }
 
