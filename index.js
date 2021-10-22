@@ -283,7 +283,6 @@ function coinflip() {
       } else if(score > 0){
         score = score + amount
       }
-      score = score + amount
       document.getElementById('score').innerText = score
       alert(`It was ${side}, you won ${amount}`)
     }
