@@ -83,6 +83,9 @@ table, th, td {
     border-collapse: collapse;
     font-size: 25px;
 }
+p.hidden {
+    color: transparent;
+}
 /*
 Patch Notes
 */
