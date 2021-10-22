@@ -9,7 +9,7 @@ click.pink = 0
 let totalcolor = ['yellow'];
 console.log(totalcolor)
 
-const version = 'V 1.1.0'
+const version = 'V 1.1.1'
 window.onload = function(){
   document.getElementById('version').innerHTML = version + ' is out'
 }
