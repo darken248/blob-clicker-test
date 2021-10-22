@@ -192,7 +192,7 @@ function load() {
       }
       document.getElementById('dialogue').src = 'img/blob/dialogue/erase.png'
       document.getElementById('click').src = 'img/erase logo.png'
-    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 10 && score >= 35000) {
+    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 10 && score >= 85000) {
       const blob = document.getElementById('blob')
       blob.style.border = '2px solid black'
       document.getElementById('blob').src = 'img/blob/Red_blob_button.png'
@@ -206,12 +206,12 @@ function load() {
       }
       document.getElementById('dialogue').src = 'img/blob/dialogue/cullen blob.png'
       document.getElementById('click').src = 'img/cullen blob.png'
-    } else if(imports.toLowerCase() === 'kirbospin') {
-      color = 'kirbospin'
-      if(totalcolor.indexOf('kirbospin') >= 1) {
+    } else if(imports.toLowerCase() === 'kirbogospin') {
+      color = 'kirbogospin'
+      if(totalcolor.indexOf('kirbogospin') >= 1) {
         console.log(totalcolor)
       } else {
-        totalcolor.push('kirbospin')
+        totalcolor.push('kirbogospin')
         console.log(totalcolor)
       }
       const dialogue = document.getElementById('dialogue')
