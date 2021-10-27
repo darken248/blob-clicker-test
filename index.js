@@ -18,7 +18,7 @@ setInterval(function() {
     score = 0
     document.getElementById('score').innerHTML = score
   }
-  if(color != 'kirbospin') {
+  if(color != 'kirbogospin') {
     const dialogue = document.getElementById('dialogue')
     const dialogue2 = document.getElementById('dialogue2')
     dialogue2.style.border = '2px solid transparent';
