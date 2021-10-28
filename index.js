@@ -1,290 +1,164 @@
-let score = 0;
-let key = '032wdfgkuywfe457ksghwajhabkdgfg98sqegeavkski356jbvhbjvnk83fge741ghsfefdfionfdi3h0g978y3esgeg467yks6214jfdgh'
-let delay = 50;
-let lastClick = 0;
-let color = 'yellow';
-var click = {};
-click.blue = 0;
-click.pink = 0
-let totalcolor = ['yellow'];
-console.log(totalcolor)
+var express = require('express');
+var cluster = require('cluster');
+//var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var bcrypt = require('bcrypt');
+var UserLogin = require('./lib/mongoose_user');
 
-const version = 'V 1.1.1'
-window.onload = function(){
-  document.getElementById('version').innerHTML = version + ' is out'
-}
-setInterval(function() {
-  if(score < 0) {
-    score = 0
-    document.getElementById('score').innerHTML = score
-  }
-  if(color != 'kirbogospin') {
-    const dialogue = document.getElementById('dialogue')
-    const dialogue2 = document.getElementById('dialogue2')
-    dialogue2.style.border = '2px solid transparent';
-    dialogue2.style.backgroundColor = 'transparent';
-    dialogue.style.border = '2px solid black';
-    document.getElementById('dialogue2').innerHTML = ''
-  }
-}, 100)
-function addToScore(amount) {
-  if (lastClick >= (Date.now() - delay))
-      return;
-  lastClick = Date.now();
-  score = score + amount
-  document.getElementById('score').innerHTML = score
-}
-function bewareIndex() {
-  if (score !== 0) {
-    if (confirm(`Are you sure? This will reset your progress if you don't save first.`)) {
-      location.href = "/index.html"
-    }
-  } else {location.href = "/index.html"}
-}
-  
-function purp() {
-  if (color === 'yellow') {
-    color = 'purple'
-    if(totalcolor.indexOf('purple') >= 1) {
-      console.log(totalcolor)
-    } else {
-      totalcolor.push('purple')
-      console.log(totalcolor)
-    }
-    document.getElementById('dialogue').src = 'img/blob/dialogue/purple.png'
-    return document.getElementById('click').src = 'img/blob/purple blob.gif'
-  } else if(color != 'yellow') {
-    color = 'yellow'
-    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-    return document.getElementById('click').src = 'img/blob/yellow blob.gif'
-  }
-}
-function dababy() {
-  if(color === 'yellow'){
-    color = 'dababy'
-    if(totalcolor.indexOf('dababy') >= 1) {
-      console.log(totalcolor)
-    } else {
-      totalcolor.push('dababy')
-      console.log(totalcolor)
-    }
-    document.getElementById('dialogue').src = 'img/blob/dialogue/dababy.png'
-    return document.getElementById('click').src = 'img/dababy.jpg'
-  } else if(color != 'yellow'){
-    color = 'yellow'
-    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-    return document.getElementById('click').src = 'img/blob/yellow blob.gif'
-  }
-}
-function red() {
-  if(color != 'red' && totalcolor.length >= 10 && score >= 35000) {
-  color = 'red'
-  document.getElementById('dialogue').src = 'img/blob/dialogue/red.png'
-  document.getElementById('click').src = 'img/blob/red blob.gif'
-  } else {
-    color = 'yellow'
-    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-    document.getElementById('click').src = 'img/blob/yellow blob.gif'
-  }
-}
-function blue(amount) {
-  click.blue = click.blue + amount
-  if (color === 'yellow' && document.getElementById('score').innerText >= 10 && click.blue >= 3) {
-    color = 'blue'
-    click.blue = 0
-    if(totalcolor.indexOf('blue') >= 1) {
-      console.log(totalcolor)
-    } else {
-      totalcolor.push('blue')
-      console.log(totalcolor)
-    }
-    document.getElementById('dialogue').src = 'img/blob/dialogue/blue.png'
-    return document.getElementById('click').src = 'img/blob/blue blob.gif'
-  } else if(color !== 'yellow' && click.blue >= 3){
-    click.blue = 0
-    color = 'yellow'
-    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-    return document.getElementById('click').src = 'img/blob/yellow blob.gif'
-  }
-  return 
-}
-//Save Score
-function save(amount) {
-  if(color != 'yellow') {
-    click.pink = click.pink + amount
-  if(color != 'yellow' && click.pink >= 5){
-    color = 'yellow'
-    click.pink = 0
-    return document.getElementById('click').src = 'img/blob/yellow blob.gif'
-  }
-  }
-  if (color === 'yellow') {
-    click.pink = click.pink + amount
-  if (color === 'yellow' && score >= 10 && click.pink >= 5) {
-    click.pink = 0
-    if (confirm('Do you like me? - Yellow Blob')) {
-      color = 'pink'
-      if(totalcolor.indexOf('pink') >= 1) {
-        console.log(totalcolor)
-      } else {
-        totalcolor.push('pink')
-        console.log(totalcolor)
-      }
-      document.getElementById('dialogue').src = 'img/blob/dialogue/pink.png'
-      return document.getElementById('click').src = 'img/blob/pink blob.gif'
-    } else {
-      color = 'green'
-      if(totalcolor.indexOf('green') >= 1) {
-        console.log(totalcolor)
-      } else {
-        totalcolor.push('green')
-        console.log(totalcolor)
-      }
-      document.getElementById('dialogue').src = 'img/blob/dialogue/green.png'
-      return document.getElementById('click').src = 'img/blob/green blob.gif'
-    }
-  }
-  }
-  if(color != 'yellow' && click.pink >= 5) {
-    color = 'yellow'
-    click.pink = 0
-    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-    return document.getElementById('click').src = 'img/blob/yellow blob.gif'
-  }
-    //Encrypt
-    let encrypted = CryptoJS.AES.encrypt(score.toString(), key).toString();
-    //Send Encrypted Line
-    return alert(encrypted)
-}
-//Load Score
-function load() {
-     //Import Encrypted Line
-    let imports = prompt('Paste your string here');
-    //Decrypt
-    if(imports.length > 15){
-    let bytes = CryptoJS.AES.decrypt(imports, key);
-    let originalText = bytes.toString(CryptoJS.enc.Utf8);
-    let ImportScore = Number(originalText)
-    score = ImportScore
-    //Change Score to Imported Score
-    document.getElementById('score').innerText = score
-    } else if(imports.toLowerCase() === 'orange' && score >= 2500) {
-      color = 'orange'
-      if(totalcolor.indexOf('orange') >= 1) {
-        console.log(totalcolor)
-      } else {
-        totalcolor.push('orange')
-        console.log(totalcolor)
-      }
-      document.getElementById('dialogue').src = 'img/blob/dialogue/orange.png'
-      document.getElementById('click').src = 'img/blob/orange blob.gif'
-    } else if(imports.toLowerCase() === 'yellow') {
-      color = 'yellow'
-      document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-      document.getElementById('click').src = 'img/blob/yellow blob.gif'
-    } else if(imports.toLowerCase() === 'erasevfx') {
-      color = 'erasevfx'
-      if(totalcolor.indexOf('erasevfx') >= 1) {
-        console.log(totalcolor)
-      } else {
-        totalcolor.push('erasevfx')
-        console.log(totalcolor)
-      }
-      document.getElementById('dialogue').src = 'img/blob/dialogue/erase.png'
-      document.getElementById('click').src = 'img/erase logo.png'
-    } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 10 && score >= 85000) {
-      const blob = document.getElementById('blob')
-      blob.style.border = '2px solid black'
-      document.getElementById('blob').src = 'img/blob/Red_blob_button.png'
-    } else if(imports.toLowerCase() === 'ilovekirbo') {
-      color = 'ilovekirbo'
-      if(totalcolor.indexOf('ilovekirbo') >= 1) {
-        console.log(totalcolor)
-      } else {
-        totalcolor.push('ilovekirbo')
-        console.log(totalcolor)
-      }
-      document.getElementById('dialogue').src = 'img/blob/dialogue/cullen blob.png'
-      document.getElementById('click').src = 'img/cullen blob.png'
-    } else if(imports.toLowerCase() === 'kirbogospin') {
-      color = 'kirbogospin'
-      if(totalcolor.indexOf('kirbogospin') >= 1) {
-        console.log(totalcolor)
-      } else {
-        totalcolor.push('kirbogospin')
-        console.log(totalcolor)
-      }
-      const dialogue = document.getElementById('dialogue')
-      const dialogue2 = document.getElementById('dialogue2')
-      dialogue2.style.border = '2px solid black';
-      dialogue.style.border = '2px solid white';
-      dialogue2.style.backgroundColor = 'rgb(63,143,42)';
-      document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'
-      document.getElementById('dialogue2').innerHTML = '<br>' + `Do you know where you're going when you die?`
-      document.getElementById('click').src = 'img/kirbo-spin.gif'
-    }
-}
-function savetxt() {
-  //Encrypt
-  let encrypted = CryptoJS.AES.encrypt(score.toString(), key).toString();
-  //Send Encrypted Line
-  var blob = new Blob([encrypted]);
-  saveAs(blob, "blobclicker.txt");
-}
-let openFile = function(event) {
-  var input = event.target;
+var app = express();
 
-  var reader = new FileReader();
-  reader.onload = function(){
-    var dataURL = reader.result;
-    let bytes = CryptoJS.AES.decrypt(dataURL, key);
-    let originalText = bytes.toString(CryptoJS.enc.Utf8);
-    let decrypted = Number(originalText)
-    score = decrypted
-    return document.getElementById('score').innerText = score
-  };
-  reader.readAsText(input.files[0]);
-};
-function coinflip() {
-  let amount = Number(document.getElementById('coinflip').value)
-  if(amount === 0) return
-  if(score < amount) {
-  console.log(score)
-  return alert('Your amount is greater than your score')
-  }
-  let imports = prompt('Heads or Tails');
-  let side = '';
-  let opposite = '';
-  if(imports.toLowerCase() === 'heads' || imports.toLowerCase() === 'head'){
-    side = 'Heads'
-    opposite = 'Tails'
-  } else if(imports.toLowerCase() === 'tails' || imports.toLowerCase() === 'tail'){
-    side = 'tails'
-    opposite = 'heads'
-  } else {
-    return alert('Incorrect Value')
-  }
-  if(score >= amount) {
-    //0 or 1
-    let random = Math.floor(Math.random() * 2)
-    if(random === 0) {
-      //lose = 0
-      if(amount < 0){
-        score = score - 0
-      } else if(score > 0){
-        score = score - amount
-      }
-      document.getElementById('score').innerText = score
-      alert(`It was ${opposite}, you chose ${side} and you lost ${amount}`)
-    } else {
-      //win = 1
-      if(amount < 0){
-        score = score + 0
-      } else if(score > 0){
-        score = score + amount
-      }
-      document.getElementById('score').innerText = score
-      alert(`It was ${side}, you won ${amount}`)
-    }
-  }
-}
+app.set('view engine','ejs');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use('/fonts', express.static('fonts'));
+app.use('/img', express.static('img')); 
+app.use('/css', express.static('views/style.css')); 
+app.use('/script', express.static('script/script.js')); 
+app.use('/version', express.static('script/version.js')); 
+app.use('/blackjack', express.static('script/blackjack.js')); 
+
+app.get('/',(req,res)=>{
+    // console.log('Request for home page');
+    res.render('index');
+});
+app.get('/login',(req,res)=>{
+    res.render('login');
+});
+
+app.get('/signup',(req,res)=>{
+    res.render('signup');
+});
+app.get('/info',(req,res)=>{
+    res.render('info');
+});
+app.get('/game',(req,res)=>{
+    var score = 0
+    var username = 'Not logged in'
+    res.render(__dirname + "/views/game", {score:score, username:username});
+    res.render('game');
+});
+app.get('/creators',(req,res)=>{
+    return res.render('creators');
+});
+app.get('/patch',(req,res)=>{
+    res.render('patch');
+});
+
+app.use("/script", express.static('./script/'));
+
+app.post('/games',(req,res)=>{
+
+    var username = req.body.username;
+    var password = req.body.pwd;
+    var time = new Date;
+
+    UserLogin.findOne({username:username},function(err,data){
+        if(err){
+            console.log(`${time}: ${err}`);
+            return res.status(500).send();
+        }
+        
+        if(!data){
+            console.log(`${time}: User Don't Exist...`)
+            return res.status(404).send();
+        }
+        var score = data.score
+        username = data.username
+    
+        // this is use to compare the password..
+        bcrypt.compare(password,data.password,function(err,data){
+            if(err){
+                console.log(`${time}: ${err}`);
+                return res.status(500).send();
+            }
+            
+            // checking for the password match...
+            if(data){
+                res.render(__dirname + "/views/game", {score:score, username:username});
+                return app.get('/game',(req,res)=>{
+                    res.render('game');
+                });
+            }
+
+            // error if password do not match...
+            return res.status(500).send();
+        }); 
+    });
+});
+
+app.post('/save', function(req, res){
+    var score = req.body['score'];
+    var username = req.body['username'];
+    var time = new Date;
+
+    UserLogin.findOne({
+        username:username
+    },function(err,data){
+        if(err){
+            console.log(`${time}: ${err}`);
+            return res.status(500).send();
+        }
+        if(username === 'Not logged in'){
+            console.log(`${time}: User not logged in`)
+            return res.status(404).send();
+        } else {
+            data.score = score
+            data.save().catch(err => console.log(err));
+        }
+    })
+}); 
+
+app.post('/signup',(req,res)=>{
+    var username = req.body.username;
+    var password = req.body.pwd;
+    var score = 0
+    var time = new Date;
+
+    // First creating salt.
+    bcrypt.genSalt(10,function(err,salt){
+        if(err){
+            console.log(`${time}: ${err}`);
+            return res.status(500).send();
+        }
+        console.log(`${time}: ${username}`);
+        // creating hash...of password
+        bcrypt.hash(password,salt,function(err,data){
+            if(err){
+                console.log(`${time}: ${err}`);
+                return res.status(500).send();
+            }
+            console.log(`${time}: ${data}`); // This is hash of the password...
+            //Creating model to save the user data in Database..
+            var newuser = new UserLogin();
+            newuser.username = username;
+            newuser.password = data;
+            newuser.score = score
+
+            // Inserting data to database...
+            newuser.save(function(err,saveuser){
+                if(err) {
+                    console.log(`${time}: ${err}`);
+                    if(err.code = 11000){
+                        console.log(`${time}: User Already Exist`);
+                        return res.status(500).send()
+                    }
+                    return res.status(500).send();
+                }
+                console.log(`${time}: new user have been save`);
+                return res.status(200).send();
+            });
+
+        });
+
+    });
+    return app.get('/login',(req,res)=>{
+        res.render('login');
+    });
+});
+
+
+app.listen(5500,function(){
+    console.log('Server is Running at port 5500....');
+});

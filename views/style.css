@@ -1,0 +1,186 @@
+ul.info {
+    background-color: rgb(255, 255, 255);
+}
+
+button {
+    background-color: rgb(255, 255, 255);
+}
+button:hover {
+    background-color: rgb(140, 228, 255);
+}
+/*
+Custom Fonts
+*/
+@font-face {
+    font-family: 'dogica'; /*a name to be used later*/
+    src: url('/fonts/dogica.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'dogicabold'; /*a name to be used later*/
+    src: url('/fonts/dogicabold.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'dogicapixel'; /*a name to be used later*/
+    src: url('/fonts/dogicapixel.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'dogicapixelbold'; /*a name to be used later*/
+    src: url('/fonts/dogicapixelbold.ttf'); /*URL to font*/
+}
+/*
+Main Menu
+*/
+img.homescreen {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+button.menuinfo {
+    position: absolute;
+    width: 45mm;
+    height: 26mm;
+    top: 1%;
+    left: 27%;
+}
+button.menucreators {
+    position: absolute;
+    top: 1%;
+    right: 27%;
+}
+button.menupatch {
+    position: absolute;
+    top: 1%;
+    left: 42%;
+}
+h1.versions {
+    -webkit-transform: rotate(30deg); 
+    -moz-transform: rotate(30deg); 
+    position: absolute;
+    top: 80px;
+    right: 5%;
+    font-family: 'dogicapixel';
+    font-size: 23px;
+    color: black;
+}
+/*
+Info
+*/
+button.game {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+button.infomenu {
+    position: absolute;
+    top: 10px;
+    left: 41mm;
+}
+/*
+About the Creators
+*/
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    font-size: 25px;
+}
+/*
+Patch Notes
+*/
+p.patchversion {
+    font-family: 'dogicapixel';
+    position: absolute;
+    top: 8%;
+    left: 20%;
+}
+/*
+Game
+*/
+h1.version {
+    position: absolute;
+    bottom: 1%;
+    right: 5%;
+}
+button.save {
+    position: absolute;
+    top: 46mm;
+    left: 8cm;
+}
+
+button.load {
+    position: absolute;
+    top: 77mm;
+    left: 8cm;
+}
+input.load {
+    position: absolute;
+    top: 108mm;
+    left: 8cm;
+    width: 20%;
+    height: 4.5%;
+}
+button.savetxt {
+    position: absolute;
+    top: 46mm;
+    left: 133mm;
+}
+
+button.loadtxt {
+    position: absolute;
+    top: 77mm;
+    left: 133mm;
+}
+.loadtxt>input {
+    display: none;
+}
+img.click {
+    border: 2px solid black;
+}
+a.dababy {
+    position: absolute;
+    right: 1%;
+    top: 50%;
+    font-size: 50px;
+    color: transparent;
+}
+img.dialogue {
+    border: 2px solid black;
+    border-collapse: collapse;
+    height: 40px;
+    width: 300px;
+}
+p.dialogue2 {
+    border: 2px solid black;
+    border-collapse: collapse;
+    height: 50px;
+    width: 300px;
+    font-family: 'dogicapixel';
+    color: rgb(196, 196, 36);
+    background-color: transparent;
+    font-size: 15px;
+    position: absolute;
+    top: 118mm;
+}
+img.blob {
+    position: absolute;
+    top: 108mm;
+    left: 108mm;
+}
+img.blob:hover {
+    background-color: rgb(140, 228, 255);
+}
+input.input-coinflip {
+    width: 107mm;
+    height: 10mm;
+    border: 2px solid black;
+    font-family: 'dogicapixel';
+    font-size: 9px;
+}
+button.btn-coinflip {
+    position: absolute;
+    left: 114mm;
+    width: 31mm;
+    height: 12mm;
+    border: 2px solid black;
+    font-family: 'dogicapixel';
+    font-size: 20px;
+}

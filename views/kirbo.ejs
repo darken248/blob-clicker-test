@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/script"></script>
+    <style>
+    h1.version {
+    color: black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    </style>
+    <script>
+        function info(){
+            location.href = "/info"
+        }
+        function game(){
+            location.href = "/game"
+        }
+        window.onload = function(){
+            document.getElementById('version').innerHTML = 'KirbogoSpin in load box'
+        }
+    </script>
+    <title>Kirbo Go BRRRRRRRRRRRRRRRRRRRR</title>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="img/blob/yellow blob.gif"/>
+</head>
+<body>
+    <h1 class="version" id="version">V 1.0.0 is out</h1>
+    <img style="height: 100%; width: 100%;" onclick="game()" src="https://www.blobclicker.tk/img/kirbo-spin.gif">
+</body>
+</html>
