@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/lb"></script>
+    <link rel="stylesheet" href="/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <button class="game" onclick="game()"><img src="/img/game.png" height="70"></button>
+    <button class="infomenu" onclick="menu()"><img src="/img/main menu.png" height="70"></button>
+    <script>
+        function menu(){
+            location.href = "/"
+        }
+        function game(){
+            location.href = "/game"
+        }
+        let result = []
+        result = "<%= result %>"
+        let user1 = result[1]
+        console.log(result)
+        document.getElementById('user1').innerText = user1.username
+    </script>
+</head>
+<body>
+    <br><br><br><br><br>
+    <table style="width: 100%;">
+        <tr style="height:60px">
+            <th>User</th>
+            <th>Score</th>
+        </tr>
+        <tr style="height:60px">
+            <td id="user1">User 1</td>
+            <td id="score1">12312312</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user2">User 2</td>
+            <td id="score2">123123</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user3">User 3</td>
+            <td id="score3">123</td>
+        </tr>
+    </table>
+</body>
+</html>

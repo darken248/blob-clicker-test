@@ -47,12 +47,17 @@
         <br>
         <img class="dialogue" id="dialogue" src="img/blob/dialogue/yellow.png">
         <p class="dialogue2" id="dialogue2" style="border: 2px solid transparent"><br></p>
+        <!--
         <img class="blob" id="blob" src="" onclick="red()" height="100px" style="border: 2px solid transparent">
         <img class="pumpkin" id="pumpkin" src="" onclick="red()" height="100px" style="border: 2px solid transparent">
+        -->
         <button class="save" id="save" onclick="save()"><img src="img/save.png" height="100"></button>
+        <!--
         <button class="load" onclick="load()"><img src="img/load.png" height="100"></button>
+        -->
         <button class="savetxt" onclick="savetxt()"><img src="img/save_as_.txt.png" height="100"></button>
         <br><br><br>
+        <!--
         <button class="loadtxt">
             <label for="file-input">
               <img src="img/load_as_.txt.png" height="100"/>
@@ -60,9 +65,11 @@
           
             <input id="file-input" type="file" accept='.txt' onchange="openFile(event)"/>
         </button>
+        -->
         <h1 class="version" id="version">V 1.0.0</h1>
-        <input class="input-coinflip" id="coinflip" type="text" value="" placeholder="Put a number in to gamble (Has to be less than what you have)">
+        <input class="input-coinflip" id="coinflip" type="number" value="" placeholder="Put a number in to gamble (Has to be less than what you have)">
         <button class="btn-coinflip" onclick="coinflip()">Gamble</button>
+        <!--        
         <h1>Blackjack</h1>
         <p id="text-area">Welcome to Blackjack!</p>
         <input style="font-family: 'dogicapixel';"id="blackjack" type="number" style="display: block;" value="" placeholder="Insert Number">
@@ -71,5 +78,6 @@
         <button id="hit-button">Hit!</button>
         <button id="stay-button">Stay</button>
         <script src="/blackjack"></script>
+        -->
       </body>
 </html>

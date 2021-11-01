@@ -24,19 +24,6 @@ setInterval(function() {
     dialogue.style.border = '2px solid black';
     document.getElementById('dialogue2').innerHTML = ''
   }
-  if(color === 'yellow' && click.time === 0){
-    document.getElementById('click').src = 'img/blob/yellow blob.gif'
-    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-    click.time = 1;
-    console.log(color + ' 2')
-  }
-  if(color === 'orange' && click.time === 0){
-    click.time = 1;
-    document.getElementById('dialogue').src = 'img/blob/dialogue/orange.png'
-    document.getElementById('click').src = 'img/blob/orange blob.gif'
-    console.log(color + ' 2')
-  }
-
   if(username === 'Not logged in') {
     document.getElementById('username').innerText = username
   } else {
@@ -189,7 +176,7 @@ function save(amount) {
     },
   });
 }
-//Load Score
+/*Load Score
 function load() {
      //Import Encrypted Line
     let imports = prompt('Paste your string here');
@@ -257,6 +244,7 @@ function load() {
       document.getElementById('click').src = 'img/kirbo-spin.gif'
     }
 }
+*/
 function savetxt() {
   //Encrypt
   let encrypted = CryptoJS.AES.encrypt(score.toString(), key).toString();
@@ -264,6 +252,7 @@ function savetxt() {
   var blob = new Blob([encrypted]);
   saveAs(blob, "blobclicker.txt");
 }
+/*OpenFile
 let openFile = function(event) {
   var input = event.target;
 
@@ -278,65 +267,9 @@ let openFile = function(event) {
   };
   reader.readAsText(input.files[0]);
 };
+*/
 function coinflip() {
-  let imports = document.getElementById('coinflip').value
-  let amount = Number(imports)
-  if(imports.toLowerCase() === 'yellow') {
-    document.getElementById('click').src = 'img/blob/yellow blob.gif'
-    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
-    color = 'yellow'
-    click.time = 0;
-  } else if(imports.toLowerCase() === 'orange' && score >= 2500) {
-    color = 'orange'
-    if(totalcolor.indexOf('orange') >= 1) {
-      console.log(totalcolor)
-    } else {
-      totalcolor.push('orange')
-      console.log(totalcolor)
-    }
-    click.time = 0;
-  } else if(imports.toLowerCase() === 'erasevfx') {
-    color = 'erasevfx'
-    if(totalcolor.indexOf('erasevfx') >= 1) {
-      console.log(totalcolor)
-    } else {
-      totalcolor.push('erasevfx')
-      console.log(totalcolor)
-    }
-    document.getElementById('dialogue').src = 'img/blob/dialogue/erase.png'
-    console.log(color)
-    return document.getElementById('click').src = 'img/erase logo.png'
-  } else if(imports.toLowerCase() === 'red' && totalcolor.length >= 10 && score >= 85000) {
-    const blob = document.getElementById('blob')
-    blob.style.border = '2px solid black'
-    document.getElementById('blob').src = '/img/blob/Red_blob_button.png'
-  } else if(imports.toLowerCase() === 'ilovekirbo') {
-    color = 'ilovekirbo'
-    if(totalcolor.indexOf('ilovekirbo') >= 1) {
-      console.log(totalcolor)
-    } else {
-      totalcolor.push('ilovekirbo')
-      console.log(totalcolor)
-    }
-    document.getElementById('dialogue').src = '/img/blob/dialogue/cullen blob.png'
-    document.getElementById('click').src = '/img/cullen blob.png'
-  } else if(imports.toLowerCase() === 'kirbogospin') {
-    color = 'kirbogospin'
-    if(totalcolor.indexOf('kirbogospin') >= 1) {
-      console.log(totalcolor)
-    } else {
-      totalcolor.push('kirbogospin')
-      console.log(totalcolor)
-    }
-    const dialogue = document.getElementById('dialogue')
-    const dialogue2 = document.getElementById('dialogue2')
-    dialogue2.style.border = '2px solid black';
-    dialogue.style.border = '2px solid white';
-    dialogue2.style.backgroundColor = 'rgb(63,143,42)';
-    document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'
-    document.getElementById('dialogue2').innerHTML = '<br>' + `Do you know where you're going when you die?`
-    document.getElementById('click').src = '/img/kirbo-spin.gif'
-  } else {
+  let amount = Number(document.getElementById('coinflip').value)
   if(amount === 0) return
   if(score < amount) {
   console.log(score)
@@ -345,10 +278,10 @@ function coinflip() {
   let imports = prompt('Heads or Tails');
   let side = '';
   let opposite = '';
-  if(imports.toLowerCase() === 'heads' || imports.toLowerCase() === 'head'){
+  if(imports.toLowerCase() === 'heads' || imports.toLowerCase() === 'head' || imports.toLowerCase() === 'h'){
     side = 'Heads'
     opposite = 'Tails'
-  } else if(imports.toLowerCase() === 'tails' || imports.toLowerCase() === 'tail'){
+  } else if(imports.toLowerCase() === 'tails' || imports.toLowerCase() === 'tail' || imports.toLowerCase() === 'h'){
     side = 'tails'
     opposite = 'heads'
   } else {
@@ -376,6 +309,5 @@ function coinflip() {
       document.getElementById('score').innerText = score
       alert(`It was ${side}, you won ${amount}`)
     }
-  }
   }
 }

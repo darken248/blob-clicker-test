@@ -106,19 +106,12 @@ button.save {
     left: 8cm;
 }
 
-button.load {
+button.savetxt {
     position: absolute;
     top: 77mm;
     left: 8cm;
 }
-input.load {
-    position: absolute;
-    top: 108mm;
-    left: 8cm;
-    width: 20%;
-    height: 4.5%;
-}
-button.savetxt {
+button.load {
     position: absolute;
     top: 46mm;
     left: 133mm;
