@@ -178,6 +178,6 @@ app.post('/signup',(req,res)=>{
 });
 
 
-app.listen(5500,function(){
+app.listen(process.env.PORT || 5500,function(){
     console.log('Server is Running at port 5500....');
 });
