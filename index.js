@@ -3,7 +3,7 @@ var cluster = require('cluster');
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var UserLogin = require('./lib/mongoose_user');
 const myconnection = mongoose.createConnection(`mongodb+srv://website:website@website-database.y2d5m.mongodb.net/Website-Database?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
