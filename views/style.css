@@ -40,24 +40,29 @@ button.menuinfo {
     width: 45mm;
     height: 26mm;
     top: 1%;
-    left: 27%;
-}
-button.menucreators {
-    position: absolute;
-    top: 1%;
-    right: 27%;
+    left: 20%;
 }
 button.menupatch {
     position: absolute;
     top: 1%;
-    left: 42%;
+    left: 35%;
+}
+button.menucreators {
+    position: absolute;
+    top: 1%;
+    right: 20%;
+}
+button.menulb {
+    position: absolute;
+    top: 1%;
+    right: 35%;
 }
 h1.versions {
     -webkit-transform: rotate(30deg); 
     -moz-transform: rotate(30deg); 
     position: absolute;
-    top: 80px;
-    right: 5%;
+    top: 90px;
+    right: 1.7%;
     font-family: 'dogicapixel';
     font-size: 23px;
     color: black;

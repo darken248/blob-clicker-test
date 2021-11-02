@@ -41,7 +41,7 @@ setInterval(() => {
       data: {'score': score, 'username': username },
     })
   }
-}, 1000);
+}, 5000);
 function addToScore(amount) {
   if (lastClick >= (Date.now() - delay))
       return;
@@ -124,16 +124,9 @@ function blue(amount) {
 }
 //Save Score
 function save(amount) {
-  if(color != 'yellow') {
+  /*if (color === 'yellow') {
     click.pink = click.pink + amount
-  if(color != 'yellow' && click.pink >= 5){
-    color = 'yellow'
-    click.pink = 0
-    return document.getElementById('click').src = 'img/blob/yellow blob.gif'
-  }
-  }
-  if (color === 'yellow') {
-    click.pink = click.pink + amount
+    console.log(click.pink)
   if (color === 'yellow' && score >= 10 && click.pink >= 5) {
     click.pink = 0
     if (confirm('Do you like me? - Yellow Blob')) {
@@ -165,16 +158,15 @@ function save(amount) {
     document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
     return document.getElementById('click').src = 'img/blob/yellow blob.gif'
   }
-    $.ajax({
-      url: '/save',
-      score: score,
-      type: 'POST',
-      data: {'score': score, 'username': username },
-      success: function(html)
-    { 
-      alert('Sucessfully Saved');
-    },
+  */
+  let encrypted = CryptoJS.AES.encrypt(score.toString(), key)
+  $.ajax({
+    url: '/save',
+    score: score,
+    type: 'POST',
+    data: {'score': score, 'username': username },
   });
+  return alert(`Sucessfully Saved, Save Line: ${encrypted} `);
 }
 /*Load Score
 function load() {
@@ -269,8 +261,67 @@ let openFile = function(event) {
 };
 */
 function coinflip() {
-  let amount = Number(document.getElementById('coinflip').value)
-  if(amount === 0) return
+  let coin = document.getElementById('coinflip').value
+  if(typeof coin === null) return
+  let amount = Number(coin)
+  if(amount <= 0) return
+  /*
+  if(coin.toLowerCase() === 'orange' && score >= 2500) {
+    color = 'orange'
+    if(totalcolor.indexOf('orange') >= 1) {
+      console.log(totalcolor)
+    } else {
+      totalcolor.push('orange')
+      console.log(totalcolor)
+    }
+    document.getElementById('dialogue').src = 'img/blob/dialogue/orange.png'
+    document.getElementById('click').src = 'img/blob/orange blob.gif'
+  } else if(coin.toLowerCase() === 'yellow') {
+    color = 'yellow'
+    document.getElementById('dialogue').src = 'img/blob/dialogue/yellow.png'
+    document.getElementById('click').src = 'img/blob/yellow blob.gif'
+  } else if(coin.toLowerCase() === 'erasevfx') {
+    color = 'erasevfx'
+    if(totalcolor.indexOf('erasevfx') >= 1) {
+      console.log(totalcolor)
+    } else {
+      totalcolor.push('erasevfx')
+      console.log(totalcolor)
+    }
+    document.getElementById('dialogue').src = 'img/blob/dialogue/erase.png'
+    document.getElementById('click').src = 'img/erase logo.png'
+  } else if(coin.toLowerCase() === 'red' && totalcolor.length >= 10 && score >= 85000) {
+    const blob = document.getElementById('blob')
+    blob.style.border = '2px solid black'
+    document.getElementById('blob').src = 'img/blob/Red_blob_button.png'
+  } else if(coin.toLowerCase() === 'ilovekirbo') {
+    color = 'ilovekirbo'
+    if(totalcolor.indexOf('ilovekirbo') >= 1) {
+      console.log(totalcolor)
+    } else {
+      totalcolor.push('ilovekirbo')
+      console.log(totalcolor)
+    }
+    document.getElementById('dialogue').src = 'img/blob/dialogue/cullen blob.png'
+    document.getElementById('click').src = 'img/cullen blob.png'
+  } else if(coin.toLowerCase() === 'kirbogospin') {
+    color = 'kirbogospin'
+    if(totalcolor.indexOf('kirbogospin') >= 1) {
+      console.log(totalcolor)
+    } else {
+      totalcolor.push('kirbogospin')
+      console.log(totalcolor)
+    }
+    const dialogue = document.getElementById('dialogue')
+    const dialogue2 = document.getElementById('dialogue2')
+    dialogue2.style.border = '2px solid black';
+    dialogue.style.border = '2px solid white';
+    dialogue2.style.backgroundColor = 'rgb(63,143,42)';
+    document.getElementById('dialogue').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC'
+    document.getElementById('dialogue2').innerHTML = '<br>' + `Do you know where you're going when you die?`
+    document.getElementById('click').src = 'img/kirbo-spin.gif'
+  } else {
+  */
   if(score < amount) {
   console.log(score)
   return alert('Your amount is greater than your score')
@@ -309,5 +360,6 @@ function coinflip() {
       document.getElementById('score').innerText = score
       alert(`It was ${side}, you won ${amount}`)
     }
-  }
+  }/*
+  }*/
 }

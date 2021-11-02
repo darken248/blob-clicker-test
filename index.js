@@ -1,14 +1,9 @@
 var express = require('express');
 var cluster = require('cluster');
-var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
 var bcrypt = require('bcryptjs');
 var UserLogin = require('./lib/mongoose_user');
-const myconnection = mongoose.createConnection(`mongodb+srv://website:website@website-database.y2d5m.mongodb.net/Website-Database?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
 
 var app = express();
 
@@ -21,7 +16,6 @@ app.use('/img', express.static('img'));
 app.use('/css', express.static('views/style.css')); 
 app.use('/script', express.static('script/script.js')); 
 app.use('/version', express.static('script/version.js')); 
-app.use('/lb', express.static('script/lb.js')); 
 app.use('/blackjack', express.static('script/blackjack.js')); 
 
 app.get('/',(req,res)=>{
@@ -52,21 +46,50 @@ app.get('/creators',(req,res)=>{
 app.get('/patch',(req,res)=>{
     res.render('patch');
 });
-/*
+/* */
 app.get('/leaderboard',(req,res)=>{
     MongoClient.connect(`mongodb+srv://website:website@website-database.y2d5m.mongodb.net/Website-Database?retryWrites=true&w=majority`, function(err, db){
     var dbo = db.db("Website-Database");
     var mysort = { score: -1}
-    dbo.collection("userdetails").find({}).sort(mysort).exec(function (err, result) {
+    dbo.collection("userdetails").find({lb:'all'}).sort(mysort).toArray(function (err, result) {
         if (err) throw err;
-        let results = result
-        res.render(__dirname + "/views/leaderboard", {result:results});
-        console.log(results);
+        let user1 = result[0].username
+        let score1 = result[0].score
+        let user2 = result[1].username
+        let score2 = result[1].score
+        let user3 = result[2].username
+        let score3 = result[2].score
+        let user4 = result[3].username
+        let score4 = result[3].score
+        let user5 = result[4].username
+        let score5 = result[4].score
+        let user6 = result[5].username
+        let score6 = result[5].score
+        let user7 = result[6].username
+        let score7 = result[6].score
+        let user8 = result[7].username
+        let score8 = result[7].score
+        let user9 = result[8].username
+        let score9 = result[8].score
+        let user10 = result[9].username
+        let score10 = result[9].score
+        res.render(__dirname + "/views/leaderboard", {
+            user1:user1, score1:score1,
+            user2:user2, score2:score2,
+            user3:user3, score3:score3,
+            user4:user4, score4:score4,
+            user5:user5, score5:score5, 
+            user6:user6, score6:score6, 
+            user7:user7, score7:score7, 
+            user8:user8, score8:score8, 
+            user9:user9, score9:score9, 
+            user10:user10, score10:score10,
+        });
         res.render('leaderboard');
       });
     });
 });
-*/
+
 app.post('/games',(req,res)=>{
 
     var username = req.body.username;
@@ -154,6 +177,7 @@ app.post('/signup',(req,res)=>{
             newuser.username = username;
             newuser.password = data;
             newuser.score = score
+            newuser.lb = 'all'
 
             // Inserting data to database...
             newuser.save(function(err,saveuser){
@@ -176,7 +200,6 @@ app.post('/signup',(req,res)=>{
         res.render('login');
     });
 });
-
 
 app.listen(process.env.PORT || 5500,function(){
     console.log('Server is Running at port 5500....');
