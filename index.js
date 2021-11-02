@@ -157,6 +157,7 @@ app.post('/signup',(req,res)=>{
     var password = req.body.pwd;
     var score = 0
     var time = new Date;
+    if(username.length <= 5)  return res.status(500).send('Username needs to be 5 characters long');
 
     // First creating salt.
     bcrypt.genSalt(10,function(err,salt){
