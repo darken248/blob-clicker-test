@@ -34,6 +34,9 @@ app.get('/Terms-&-Conditions',(req,res)=>{
 app.get('/info',(req,res)=>{
     res.render('info');
 });
+app.get('/kirbo',(req,res)=>{
+    res.render('kirbo');
+});
 app.get('/game',(req,res)=>{
     var score = 0
     var username = 'Not logged in'
@@ -104,7 +107,7 @@ app.post('/games',(req,res)=>{
         
         if(!data){
             console.log(`${time}: User Don't Exist...`)
-            return res.status(404).send('Account not created');
+            return res.status(404).send('Account not created, Go back at ' + '<a href="/login">Here</a>');
         }
         var score = data.score
         username = data.username
@@ -157,7 +160,6 @@ app.post('/signup',(req,res)=>{
     var password = req.body.pwd;
     var score = 0
     var time = new Date;
-
     // First creating salt.
     bcrypt.genSalt(10,function(err,salt){
         if(err){
