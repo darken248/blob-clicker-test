@@ -124,6 +124,7 @@ function blue(amount) {
 }
 //Save Score
 function save(amount) {
+  if(username !== 'Not logged in'){
   /*if (color === 'yellow') {
     click.pink = click.pink + amount
     console.log(click.pink)
@@ -167,6 +168,9 @@ function save(amount) {
     data: {'score': score, 'username': username },
   });
   return alert(`Sucessfully Saved, Save Line: ${encrypted} `);
+  } else {
+    alert('Login to save')
+  }
 }
 /*Load Score
 function load() {
@@ -238,11 +242,15 @@ function load() {
 }
 */
 function savetxt() {
+  if(username !== 'Not logged in'){
   //Encrypt
   let encrypted = CryptoJS.AES.encrypt(score.toString(), key).toString();
   //Send Encrypted Line
   var blob = new Blob([encrypted]);
   saveAs(blob, "blobclicker.txt");
+  } else {
+    alert('Login to save')
+  }
 }
 /*OpenFile
 let openFile = function(event) {

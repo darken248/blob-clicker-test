@@ -37,7 +37,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/blob/yellow blob.gif"/>
     <button class="menu" onclick="bewareIndex()"><img src="/img/main menu.png" height="70"></button>
 </head>
-    <body>
+    <body id="body">
         <div style="position: absolute;top: 50px;right: 5%;font-family: 'dogicapixel';" id="display_username"><h2><a id="username">Not logged in</a></h2></div>
         <div style="position: absolute;top: 3px;right: 5%;font-family: 'dogicapixel';" id="login"><h4><a href="/login">Click here to Login </a></h4></div>
         <div id="divscore"><a onclick="purp()">Score:</a><a onclick="dababy()"class="dababy">Lets Go</a></div>
@@ -80,4 +80,11 @@
         <script src="/blackjack"></script>
         -->
       </body>
+      <script type="text/javascript">
+        document.body.onkeyup = function(e) {
+            if( e.keyCode === 17 ) {
+                addToScore(1);
+            }
+        } 
+      </script>
 </html>
