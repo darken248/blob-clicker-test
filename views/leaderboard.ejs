@@ -16,15 +16,53 @@
         function game(){
             location.href = "/game"
         }
-        let result = []
-        result = "<%= result %>"
-        let user1 = result[1]
-        console.log(result)
-        document.getElementById('user1').innerText = user1.username
+        let user1 = "<%= user1 %>"
+        let score1 = "<%= score1 %>"
+        let user2 = "<%= user2 %>"
+        let score2 = "<%= score2 %>"
+        let user3 = "<%= user3 %>"
+        let score3 = "<%= score3 %>"
+        let user4 = "<%= user4 %>"
+        let score4 = "<%= score4 %>"
+        let user5 = "<%= user5 %>"
+        let score5 = "<%= score5 %>"
+        let user6 = "<%= user6 %>"
+        let score6 = "<%= score6 %>"
+        let user7 = "<%= user7 %>"
+        let score7 = "<%= score7 %>"
+        let user8 = "<%= user8 %>"
+        let score8 = "<%= score8 %>"
+        let user9 = "<%= user9 %>"
+        let score9 = "<%= score9 %>"
+        let user10 = "<%= user10 %>"
+        let score10 = "<%= score10 %>"
+        window.onload = function(){
+            document.getElementById('user1').innerText = user1
+            document.getElementById('score1').innerText = score1
+            document.getElementById('user2').innerText = user2
+            document.getElementById('score2').innerText = score2
+            document.getElementById('user3').innerText = user3
+            document.getElementById('score3').innerText = score3
+            document.getElementById('user4').innerText = user4
+            document.getElementById('score4').innerText = score4
+            document.getElementById('user5').innerText = user5
+            document.getElementById('score5').innerText = score5
+            document.getElementById('user6').innerText = user6
+            document.getElementById('score6').innerText = score6
+            document.getElementById('user7').innerText = user7
+            document.getElementById('score7').innerText = score7
+            document.getElementById('user8').innerText = user8
+            document.getElementById('score8').innerText = score8
+            document.getElementById('user9').innerText = user9
+            document.getElementById('score9').innerText = score9
+            document.getElementById('user10').innerText = user10
+            document.getElementById('score10').innerText = score10
+        }
     </script>
 </head>
 <body>
     <br><br><br><br><br>
+    <h1>Leaderboard of Top 10</h1>
     <table style="width: 100%;">
         <tr style="height:60px">
             <th>User</th>
@@ -32,15 +70,43 @@
         </tr>
         <tr style="height:60px">
             <td id="user1">User 1</td>
-            <td id="score1">12312312</td>
+            <td id="score1">1</td>
         </tr>
         <tr style="height:60px">
             <td id="user2">User 2</td>
-            <td id="score2">123123</td>
+            <td id="score2">2</td>
         </tr>
         <tr style="height:60px">
             <td id="user3">User 3</td>
-            <td id="score3">123</td>
+            <td id="score3">3</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user4">User 4</td>
+            <td id="score4">4</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user5">User 5</td>
+            <td id="score5">5</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user6">User 6</td>
+            <td id="score6">6</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user7">User 7</td>
+            <td id="score7">7</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user8">User 8</td>
+            <td id="score8">8</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user9">User 9</td>
+            <td id="score9">9</td>
+        </tr>
+        <tr style="height:60px">
+            <td id="user10">User 10</td>
+            <td id="score10">10</td>
         </tr>
     </table>
 </body>
