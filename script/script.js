@@ -340,7 +340,7 @@ function coinflip() {
   if(imports.toLowerCase() === 'heads' || imports.toLowerCase() === 'head' || imports.toLowerCase() === 'h'){
     side = 'Heads'
     opposite = 'Tails'
-  } else if(imports.toLowerCase() === 'tails' || imports.toLowerCase() === 'tail' || imports.toLowerCase() === 'h'){
+  } else if(imports.toLowerCase() === 'tails' || imports.toLowerCase() === 'tail' || imports.toLowerCase() === 't'){
     side = 'tails'
     opposite = 'heads'
   } else {
