@@ -1,4 +1,5 @@
 var score = 0;
+let handclick = 0;
 var username = 'Not logged in'
 let key = '032wdfgkuywfe457ksghwajhabkdgfg98sqegeavkski356jbvhbjvnk83fge741ghsfefdfionfdi3h0g978y3esgeg467yks6214jfdgh'
 let delay = 50;
@@ -10,7 +11,8 @@ click.pink = 0
 click.time = 0;
 let totalcolor = ['yellow'];
 console.log(totalcolor)
-
+var prestige = 0;
+var num = 1;
 setInterval(function() {
   if(score < 1) {
     score = 0
@@ -27,7 +29,7 @@ setInterval(function() {
   if(username === 'Not logged in') {
     document.getElementById('username').innerText = username
   } else {
-    document.getElementById('login').innerHTML = ''
+    document.getElementById('login').innerHTML = 'Click here to Logout'
     document.getElementById('username').innerText = 'Logged in as ' + username
     document.getElementById('score').innerHTML = score
   }
@@ -38,7 +40,7 @@ setInterval(() => {
       url: '/save',
       score: score,
       type: 'POST',
-      data: {'score': score, 'username': username },
+      data: {'score': score, 'username': username, 'handclick': handclick },
     })
   }
 }, 5000);
@@ -47,7 +49,33 @@ function addToScore(amount) {
       return;
   lastClick = Date.now();
   score = score + amount
+  handclick = handclick + amount
   document.getElementById('score').innerHTML = score
+}
+function levelup() {
+  if(username !== 'Not logged in'){
+    let next = 1000000 * (num * 5)
+    if(prestige >= 10) {
+      return alert('You reached the maximum prestige level currently')
+    }
+    if(score < next) {
+      alert(`You do not meet the current requirement of ${next} score`)
+    } else {
+      let ask = confirm('Are you sure you want to level up Prestige, Your score will be reseted if yes')
+      if(ask) {
+        $.ajax({
+          url: '/prestige',
+          type: 'POST',
+          data: {'prestige': prestige, 'username': username },
+        })
+        window.location.href = '/login';
+      } else {
+        return
+      }
+    }
+  } else {
+    alert('Login to Prestige')
+  }
 }
 function bewareIndex() {
   if (score !== 0) {
@@ -356,6 +384,14 @@ function coinflip() {
       } else if(score > 0){
         score = score - amount
       }
+      if(username !== 'Not logged in'){
+        $.ajax({
+          url: '/save',
+          score: score,
+          type: 'POST',
+          data: {'score': score, 'username': username, 'handclick': handclick },
+        })
+      }
       document.getElementById('score').innerText = score
       alert(`It was ${opposite}, you chose ${side} and you lost ${amount}`)
     } else {
@@ -364,6 +400,14 @@ function coinflip() {
         score = score + 0
       } else if(score > 0){
         score = score + amount
+      }
+      if(username !== 'Not logged in'){
+        $.ajax({
+          url: '/save',
+          score: score,
+          type: 'POST',
+          data: {'score': score, 'username': username, 'handclick': handclick },
+        })
       }
       document.getElementById('score').innerText = score
       alert(`It was ${side}, you won ${amount}`)

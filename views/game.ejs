@@ -5,31 +5,58 @@
     <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
     <script src="/script"></script>
     <script src="/version"></script>
-    <script>
+    <script type="text/javascript">
     score = Number("<%= score %>")
     username = "<%= username %>"
-    console.log(username)
-    window.onload = function(){
-        document.getElementById('version').innerText = version
-    }
-    </script>
-    <link rel="stylesheet" href="/css">
-<head>
-    <script type="text/javascript">
-    //60 = 1 min// 600 = 10 min
+    handclick = "<%= handclick %>"
+    prestige = Number("<%= prestige %>")
+        if(prestige === 1) {
+            num = 2
+        } else if(prestige === 2) {
+            num = 4
+        } else if(prestige === 3) {
+            num = 8
+        } else if(prestige === 4) {
+            num = 16
+        } else if(prestige === 5) {
+            num = 32
+        } else if(prestige === 6) {
+            num = 64
+        } else if(prestige === 7) {
+            num = 128
+        } else if(prestige === 8) {
+            num = 256
+        } else if(prestige === 9) {
+            num = 512
+        } else if(prestige === 10) {
+            num = 1024
+        } else if(prestige > 10){
+            prestige = 10
+            num = 1024
+            $.ajax({
+            url: '/prestige',
+            type: 'POST',
+            data: {'prestige': prestige, 'username': username },
+            })
+        }
+        //60 = 1 min// 600 = 10 min
         let min10 = Math.floor(Math.random() * 10)
         let time10to15 = 10 + min10
         let checktime = 60 * time10to15
         console.log(`min10 = ${min10}, time10to15  = ${time10to15}, checktime = ${checktime}`)
         setInterval(function() {
-        let time = new Date;
-        console.log(`(${time}) + (${time10to15}) + (${checktime * 10})`)
-        return alert(`Are you there? It has been ${time10to15} minutes`)
+            let time = new Date;
+            console.log(`(${time}) + (${time10to15}) + (${checktime * 10})`)
+            return alert(`Are you there? It has been ${time10to15} minutes`)
         }, checktime * 1000);
         window.onload = function() {
             document.getElementById('version').innerHTML = version
+            document.getElementById('prestige').innerHTML = prestige
+            document.getElementById('spc').innerText = num
         }
     </script>
+    <link rel="stylesheet" href="/css">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,11 +66,13 @@
 </head>
     <body id="body">
         <div style="position: absolute;top: 50px;right: 5%;font-family: 'dogicapixel';" id="display_username"><h2><a id="username">Not logged in</a></h2></div>
-        <div style="position: absolute;top: 3px;right: 5%;font-family: 'dogicapixel';" id="login"><h4><a href="/login">Click here to Login </a></h4></div>
-        <div id="divscore"><a onclick="purp()">Score:</a><a onclick="dababy()"class="dababy">Lets Go</a></div>
-        <p class="score" id="score" onclick="blue(1)">0</p>
+        <div style="position: absolute;top: 3px;right: 5%;font-family: 'dogicapixel';"><h4><a id="login" href="/login">Click here to Login </a></h4></div>
+        <div style="position: absolute;"><a onclick="levelup()">Upgrade Prestige</a> (Current Prestige: <a id="prestige">0</a>)</div>
+        <br><br><br>
+        <div id="divscore"><a onclick="purp()">Score: <a class="score" id="score" onclick="blue(1)">0</a></a><a onclick="dababy()"class="dababy">Lets Go</a></div>
+        <div>Score per Click: <a id="spc">1</a></div>
         <br>
-        <img class="click" id="click" src="img/blob/yellow blob.gif" height="280px" width="280px" onclick="addToScore(1)">
+        <img class="click" id="click" src="img/blob/yellow blob.gif" height="280px" width="280px" onclick="addToScore(num)">
         <br>
         <img class="dialogue" id="dialogue" src="img/blob/dialogue/yellow.png">
         <p class="dialogue2" id="dialogue2" style="border: 2px solid transparent"><br></p>
@@ -83,7 +112,7 @@
       <script type="text/javascript">
         document.body.onkeyup = function(e) {
             if( e.keyCode === 17 ) {
-                addToScore(1);
+                addToScore(num);
             }
         } 
       </script>

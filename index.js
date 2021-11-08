@@ -6,6 +6,7 @@ var bcrypt = require('bcryptjs');
 var UserLogin = require('./lib/mongoose_user');
 
 var app = express();
+var port = process.env.PORT || 5500
 
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,9 +39,11 @@ app.get('/kirbo',(req,res)=>{
     res.render('kirbo');
 });
 app.get('/game',(req,res)=>{
-    var score = 0
+    var score = 0;
+    var prestige = 0;
+    var handclick = 0;
     var username = 'Not logged in'
-    res.render(__dirname + "/views/game", {score:score, username:username});
+    res.render(__dirname + "/views/game", {score:score, username:username, prestige:prestige, handclick:handclick});
     res.render('game');
 });
 app.get('/creators',(req,res)=>{
@@ -111,7 +114,20 @@ app.post('/games',(req,res)=>{
         }
         var score = data.score
         username = data.username
-    
+        var prestige = 0
+        var handclick = 0;
+        if(!data.prestige) {
+            data.prestige = 0;
+            data.save().catch(err => console.log(err));
+        } else {
+            prestige = data.prestige
+        }
+        if(!data.handclick) {
+            data.handclick = score;
+            data.save().catch(err => console.log(err));
+        } else {
+            handclick = data.handclick
+        }
         // this is use to compare the password..
         bcrypt.compare(password,data.password,function(err,data){
             if(err){
@@ -121,7 +137,7 @@ app.post('/games',(req,res)=>{
             
             // checking for the password match...
             if(data){
-                res.render(__dirname + "/views/game", {score:score, username:username});
+                res.render(__dirname + "/views/game", {score:score, username:username, prestige:prestige, handclick:handclick});
                 return app.get('/game',(req,res)=>{
                     res.render('game');
                 });
@@ -133,8 +149,8 @@ app.post('/games',(req,res)=>{
     });
 });
 
-app.post('/save', function(req, res){
-    var score = req.body['score'];
+app.post('/prestige', function(req, res){
+    var prestige = req.body['prestige'];
     var username = req.body['username'];
     var time = new Date;
 
@@ -149,7 +165,37 @@ app.post('/save', function(req, res){
             console.log(`${time}: User not logged in`)
             return res.status(404).send();
         } else {
+            if(prestige > 10) {
+                data.prestige = 10
+                data.save().catch(err => console.log(err));
+            } else {
+                data.prestige = Number(prestige) + 1
+                data.score = 0;
+                data.save().catch(err => console.log(err));
+            }
+        }
+    })
+}); 
+
+app.post('/save', function(req, res){
+    var score = req.body['score'];
+    var username = req.body['username'];
+    var handclick = req.body['handclick'];
+    var time = new Date;
+
+    UserLogin.findOne({
+        username:username
+    },function(err,data){
+        if(err){
+            console.log(`${time}: ${err}`);
+            return res.status(500).send();
+        }
+        if(username === 'Not logged in'){
+            console.log(`${time}: User not logged in`)
+            return res.status(404).send();
+        } else {
             data.score = score
+            data.handclick = handclick
             data.save().catch(err => console.log(err));
         }
     })
@@ -158,6 +204,8 @@ app.post('/save', function(req, res){
 app.post('/signup',(req,res)=>{
     var username = req.body.username;
     var password = req.body.pwd;
+    var prestige = 0;
+    var handclick = 0;
     var score = 0
     var time = new Date;
     // First creating salt.
@@ -178,8 +226,10 @@ app.post('/signup',(req,res)=>{
             var newuser = new UserLogin();
             newuser.username = username;
             newuser.password = data;
-            newuser.score = score
-            newuser.lb = 'all'
+            newuser.score = score;
+            newuser.lb = 'all';
+            newuser.prestige = prestige;
+            newuser.handclick = handclick;
 
             // Inserting data to database...
             newuser.save(function(err,saveuser){
@@ -203,6 +253,6 @@ app.post('/signup',(req,res)=>{
     });
 });
 
-app.listen(process.env.PORT || 5500,function(){
-    console.log('Server is Running at port 5500....');
+app.listen(port,function(){
+    console.log(`Server is Running at port ${port}....`);
 });
