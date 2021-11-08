@@ -4,11 +4,29 @@
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/css">
+<<<<<<< beta
     <link rel="shortcut icon" type="image/x-icon" href="img/blob/yellow blob.gif"/>
     <script>
+=======
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+>>>>>>> main
         function game(){
             location.href = "/game"
         }
+    $(document).ready(function() {
+    // do not allow users to enter spaces:
+    $(  ".form-control" ).on({
+    keydown: function(event) {
+    if (event.which === 32)
+    return false;
+    },
+    // if a space copied and pasted in the input field, replace it (remove it):
+    change: function() {
+    this.value = this.value.replace(/\s/g, "");
+    }
+    });
+    });
     </script>
 </head>
   <body>
@@ -20,7 +38,7 @@
                 <form action="/signup" method="post">
                     <div class="form-group">
                         <label for="username">Username:</label>
-                        <input type="username" class="form-control" name="username" minlength="6">
+                        <input type="username" class="form-control" name="username" minlength="6" maxlength="15">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Password:</label>
